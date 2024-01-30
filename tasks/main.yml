@@ -60,10 +60,10 @@
 
 - name: Verify node_exporter is responding to requests.
   uri:
-    url: "http://{% if node_exporter_host !='' %}{{ node_exporter_host }}{% else %}localhost{% endif %}:{{ node_exporter_port }}/"
+    url: "http://{{ username }}:{{ password }}@{% if node_exporter_host !='' %}{{ node_exporter_host }}{% else %}localhost{% endif %}:{{ node_exporter_port }}/"
     return_content: true
-    url_password: '{{ password }}'
-    url_username: '{{ username }}'
-    force_basic_auth: true
+    # url_password: '{{ password }}'
+    # url_username: '{{ username }}'
+    # force_basic_auth: true
   register: metrics_output
   failed_when: "'Metrics' not in metrics_output.content"
