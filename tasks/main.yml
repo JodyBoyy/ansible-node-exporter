@@ -64,5 +64,6 @@
     return_content: true
     url_password: '{{ password }}'
     url_username: '{{ username }}'
+    force_basic_auth: true
   register: metrics_output
   failed_when: "'Metrics' not in metrics_output.content"
